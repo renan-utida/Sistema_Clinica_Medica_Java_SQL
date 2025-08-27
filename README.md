@@ -17,23 +17,26 @@ O projeto segue uma arquitetura em camadas bem definida:
 
 ```
 com.example.clinic/
-├── App.java                     # Classe principal com interfaces
-├── domain/
-│   ├── model/
-│   │   ├── Consulta.java       # Entidade Consulta
-│   │   ├── Medico.java         # Entidade Médico
-│   │   └── Paciente.java       # Entidade Paciente
-│   └── service/
-│       ├── AgendaService.java  # Regras de agendamento
-│       ├── MedicoService.java  # Regras de médicos
-│       └── PacienteService.java # Regras de pacientes
-└── infra/
+    ├── config/
+    │   └── OracleConnectionFactory.java         # Factory de conexão Oracle
     ├── dao/
-    │   ├── ConsultaJdbcRepository.java # Acesso a dados de consultas
-    │   ├── MedicoDao.java             # Acesso a dados de médicos
-    │   └── PacienteDao.java           # Acesso a dados de pacientes
-    └── db/
-        └── OracleConnectionFactory.java # Factory de conexão Oracle
+    │   └── jdbc/
+    │       ├── ConsultaJdbcRepository.java      # Acesso a dados de consultas
+    │       ├── MedicoDao.java                   # Acesso a dados de médicos
+    │       └── PacienteDao.java                 # Acesso a dados de pacientes
+    ├── domain/
+    │   ├── Consulta.java                        # Entidade Consulta
+    │   ├── Medico.java                          # Entidade Médico
+    │   └── Paciente.java                        # Entidade Paciente
+    ├── service/
+    │   ├── AgendaService.java                   # Regras de agendamento
+    │   ├── MedicoService.java                   # Regras de médicos
+    │   └── PacienteService.java                 # Regras de pacientes
+    └── ui/
+        ├── console/
+        │    └── ConsoleMain.java                # Classe principal com interface de Console
+        └── swing/
+             └── SwingMain.java                  # Classe principal com interface de Swing
 ```
 
 ## 🛠️ Tecnologias Utilizadas
@@ -96,17 +99,12 @@ ORACLE_PASSWORD=sua_senha
 
 #### Interface Console
 ```bash
-java com.example.clinic.App --ui=console
+java com.example.clinic.ui.console.ConsoleMain.java
 ```
 
 #### Interface Gráfica (Swing)
 ```bash
-java com.example.clinic.App --ui=swing
-```
-
-#### Sem parâmetros (exibe ajuda)
-```bash
-java com.example.clinic.App
+java com.example.clinic.ui.swing.SwingMain.java
 ```
 
 ## 📱 Interfaces
@@ -228,15 +226,20 @@ CRM do médico: CRM98765
 projeto-clinica/
 ├── src/
 │   └── com/example/clinic/
-│       ├── App.java
+│       ├── config/
+│       ├── dao.jdbc/
 │       ├── domain/
-│       └── infra/
+│       ├── service/
+│       └── ui/
+│           ├── console/
+│           │    └── ConsoleMain.java
+│           └── swing/
+│                └── SwingMain.java             
 ├── sql/
 │   ├── schema.sql
 │   └── cargaInicial.sql
-├── lib/
-│   └── ojdbc11.jar (driver Oracle)
 └── README.md
+
 ```
 
 ## 🤝 Contribuição
@@ -253,7 +256,7 @@ Este projeto é desenvolvido para fins educacionais.
 
 ## 👨‍💻 Autor
 
-**Renan Dias Utida**
+**Renan Dias Utida** - RM 558540
 - LinkedIn: [Renan Dias Utida](https://www.linkedin.com/in/renan-dias-utida-1b1228225/)
 - GitHub: [renan-utida](https://github.com/renan-utida)
 
