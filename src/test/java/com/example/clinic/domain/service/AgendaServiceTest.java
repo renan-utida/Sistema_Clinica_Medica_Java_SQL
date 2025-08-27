@@ -1,6 +1,7 @@
 package com.example.clinic.domain.service;
 
-import com.example.clinic.domain.model.Consulta;
+import com.example.clinic.domain.Consulta;
+import com.example.clinic.service.AgendaService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

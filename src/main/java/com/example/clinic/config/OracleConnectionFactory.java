@@ -1,4 +1,4 @@
-package com.example.clinic.infra.db;
+package com.example.clinic.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,8 +15,8 @@ public class OracleConnectionFactory {
 
     public static Connection getConnection() throws SQLException {
         String url  = System.getenv().getOrDefault("ORACLE_URL", "jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl");
-        String user = System.getenv().getOrDefault("ORACLE_USER", "RM...");
-        String pass = System.getenv().getOrDefault("ORACLE_PASSWORD", "senha");
+        String user = System.getenv().getOrDefault("ORACLE_USER", "RM558540");
+        String pass = System.getenv().getOrDefault("ORACLE_PASSWORD", "160203");
 
         Properties props = new Properties();
         props.setProperty("user", user);

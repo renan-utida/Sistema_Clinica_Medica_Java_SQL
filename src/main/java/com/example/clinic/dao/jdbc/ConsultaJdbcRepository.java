@@ -1,8 +1,8 @@
-package com.example.clinic.infra.dao;
+package com.example.clinic.dao.jdbc;
 
-import com.example.clinic.domain.model.Consulta;
-import com.example.clinic.domain.service.AgendaService;
-import com.example.clinic.infra.db.OracleConnectionFactory;
+import com.example.clinic.domain.Consulta;
+import com.example.clinic.service.AgendaService;
+import com.example.clinic.config.OracleConnectionFactory;
 
 import java.sql.*;
 import java.time.LocalDateTime;

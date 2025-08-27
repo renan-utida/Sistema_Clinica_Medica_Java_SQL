@@ -1,7 +1,7 @@
-package com.example.clinic.domain.service;
+package com.example.clinic.service;
 
-import com.example.clinic.domain.model.Medico;
-import com.example.clinic.infra.dao.MedicoDao;
+import com.example.clinic.domain.Medico;
+import com.example.clinic.dao.jdbc.MedicoDao;
 import java.util.List;
 
 public class MedicoService {

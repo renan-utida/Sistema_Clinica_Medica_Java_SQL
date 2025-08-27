@@ -1,6 +1,6 @@
-package com.example.clinic.domain.service;
+package com.example.clinic.service;
 
-import com.example.clinic.domain.model.Consulta;
+import com.example.clinic.domain.Consulta;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;

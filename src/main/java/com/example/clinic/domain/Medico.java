@@ -1,4 +1,4 @@
-package com.example.clinic.domain.model;
+package com.example.clinic.domain;
 
 import java.util.Objects;
 

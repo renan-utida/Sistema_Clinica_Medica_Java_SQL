@@ -1,7 +1,7 @@
-package com.example.clinic.domain.service;
+package com.example.clinic.service;
 
-import com.example.clinic.domain.model.Paciente;
-import com.example.clinic.infra.dao.PacienteDao;
+import com.example.clinic.domain.Paciente;
+import com.example.clinic.dao.jdbc.PacienteDao;
 import java.util.List;
 import java.util.regex.Pattern;
 

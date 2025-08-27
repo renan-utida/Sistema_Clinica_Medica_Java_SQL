@@ -1,7 +1,7 @@
-package com.example.clinic.infra.dao;
+package com.example.clinic.dao.jdbc;
 
-import com.example.clinic.domain.model.Medico;
-import com.example.clinic.infra.db.OracleConnectionFactory;
+import com.example.clinic.domain.Medico;
+import com.example.clinic.config.OracleConnectionFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
