@@ -1,6 +1,6 @@
 # Sistema de Clínica Médica
 
-Um sistema completo para gestão de clínicas médicas desenvolvido em Java, com interface console e gráfica (Swing), integrado ao banco de dados Oracle.
+Um sistema completo para gestão de clínicas médicas desenvolvido em Java, com interface console e gráfica (Swing), integrado ao banco de dados Oracle e com teste unitário.
 
 ## 📋 Funcionalidades
 
@@ -10,6 +10,7 @@ Um sistema completo para gestão de clínicas médicas desenvolvido em Java, com
 - ✅ **Interface Dupla**: Console (Scanner) e Gráfica (Swing)
 - ✅ **Integração com Oracle Database**
 - ✅ **Validações de Regras de Negócio**
+- ✅ **Teste Unitário com JUnit 5 e Mockito**
 
 ## 🏗️ Arquitetura
 
@@ -37,6 +38,10 @@ com.example.clinic/
         │    └── ConsoleMain.java                # Classe principal com interface de Console
         └── swing/
              └── SwingMain.java                  # Classe principal com interface de Swing
+
+test/
+    └── com.example.clinic.domain.service/
+        └── AgendaServiceTest.java               # Testes unitários do AgendaService
 ```
 
 ## 🛠️ Tecnologias Utilizadas
@@ -45,6 +50,8 @@ com.example.clinic/
 - **Oracle Database** (JDBC)
 - **Swing** (Interface Gráfica)
 - **Scanner** (Interface Console)
+- **JUnit 5** (Testes Unitários)
+- **Mockito** (Mocking para testes)
 
 ## 📊 Banco de Dados
 
@@ -93,7 +100,8 @@ ORACLE_PASSWORD=sua_senha
 1. **Java 17+** instalado
 2. **Oracle Database** configurado
 3. **Driver JDBC Oracle** no classpath
-4. Executar os scripts `schema.sql` e `cargaInicial.sql`
+4. **JUnit 5** e **Mockito** para execução dos testes
+5. Executar os scripts `schema.sql` e `cargaInicial.sql`
 
 ### Execução
 
@@ -105,6 +113,18 @@ java com.example.clinic.ui.console.ConsoleMain.java
 #### Interface Gráfica (Swing)
 ```bash
 java com.example.clinic.ui.swing.SwingMain.java
+```
+
+#### Execução do Teste
+```bash
+# Com Maven
+mvn test
+
+# Com Gradle
+gradle test
+
+# Diretamente com JUnit
+java -cp "classpath:junit5:mockito" org.junit.platform.console.ConsoleLauncher --class-path=build/classes --scan-class-path
 ```
 
 ## 📱 Interfaces
@@ -182,6 +202,41 @@ Exemplo: paciente@email.com
 
 ## 🧪 Testes
 
+O projeto inclui testes unitários abrangentes para validar as regras de negócio.
+
+### Classe AgendaServiceTest
+- **Localização**: `test/com.example.clinic.domain.service/AgendaServiceTest.java`
+- **Framework**: JUnit 5 com Mockito
+- **Cobertura**: Validações de agendamento de consultas
+
+#### Cenários Testados:
+1. **`deveAgendarConsultaComRegrasValidas()`**
+   - Testa agendamento válido com todas as regras atendidas
+   - Verifica se retorna ID da consulta criada
+
+2. **`naoDeveAgendarComConflitoDeHorario()`**
+   - Testa validação de conflitos de horário
+   - Verifica se lança `IllegalStateException` quando médico já tem consulta no horário
+
+3. **`naoDeveAgendarSemAntecedenciaMinima()`**
+   - Testa validação de antecedência mínima (60 minutos)
+   - Verifica se lança `IllegalArgumentException` para agendamentos com menos antecedência
+
+### Executando Testes Específicos
+
+#### Via IDE
+- Execute diretamente na IDE (IntelliJ, Eclipse, VS Code)
+- Clique com botão direito em `AgendaServiceTest.java` → "Run Tests"
+
+#### Via Linha de Comando
+```bash
+# Executar apenas os testes do AgendaService
+java -cp "classpath" org.junit.platform.console.ConsoleLauncher --select-class=com.example.clinic.domain.service.AgendaServiceTest
+
+# Executar teste específico
+java -cp "classpath" org.junit.platform.console.ConsoleLauncher --select-method=com.example.clinic.domain.service.AgendaServiceTest#deveAgendarConsultaComRegrasValidas
+```
+
 ### Testando Cadastros
 1. Execute a aplicação
 2. Cadastre pacientes e médicos
@@ -234,7 +289,10 @@ projeto-clinica/
 │           ├── console/
 │           │    └── ConsoleMain.java
 │           └── swing/
-│                └── SwingMain.java             
+│                └── SwingMain.java
+├── test/
+│   └── com/example/clinic/domain/service/
+│       └── AgendaServiceTest.java          
 ├── sql/
 │   ├── schema.sql
 │   └── cargaInicial.sql
